@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="pt-BR"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SIER | Produtos naturais</title>
+<meta name="description" content="Prata coloidal, óleo de rícino, sal integral e o desodorante cristal natural ALVA.">
+<style>
+:root{color-scheme:dark;--fundo:#0b1812;--brilho:#1c372b;--texto:#f3ebdb;--suave:#b8c9bd;--menu:#dbe7dc;--ouro:#edc58a;--ouro2:#c9a45c;--linha:#435747;--card:#10241a;--hover:#203729;--ativo:#2c4334;--ativo-borda:#8d7957;
+  --serif:Georgia,'Times New Roman',serif;--sans:'Segoe UI',system-ui,-apple-system,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--sans);color:var(--texto);background:var(--fundo) radial-gradient(ellipse at 30% 0,var(--brilho),transparent 60%) no-repeat;min-height:100vh}
+a{color:inherit}
+.wrap{max-width:1240px;margin:auto;padding:0 clamp(16px,4vw,48px)}
+.topo{padding:clamp(28px,5vw,56px) 0 clamp(20px,3vw,32px)}
+.marca{font:600 .9rem var(--serif);letter-spacing:.45em;color:var(--ouro);display:flex;align-items:center;gap:14px}
+.marca::after{content:"";width:56px;height:1px;background:var(--ouro2)}
+h1{font:400 clamp(2rem,5vw,3.4rem)/1.08 var(--serif);margin:14px 0 10px}
+.lead{color:var(--suave);font-size:clamp(1rem,1.6vw,1.15rem);max-width:640px;margin:0 0 22px;line-height:1.5}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--ouro);color:#1a1408;font-weight:600;text-decoration:none;padding:13px 22px;border-radius:999px;border:0;transition:transform .15s,background .15s}
+.btn:hover{background:#f5d6a6;transform:translateY(-1px)}
+.btn:focus-visible,.aba:focus-visible,.seta:focus-visible,.cap:focus-visible,.ponto:focus-visible{outline:2px solid var(--ouro);outline-offset:3px}
+h2{font:400 clamp(1.5rem,3vw,2.1rem) var(--serif);margin:0 0 6px}
+.bloco{padding:clamp(28px,4vw,48px) 0;border-top:1px solid var(--linha)}
+.bloco>.wrap>p{color:var(--suave);margin:0 0 20px}
+/* abas de produto */
+.abas{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 18px}
+.aba{font:inherit;font-size:.92rem;color:var(--menu);background:transparent;border:1px solid var(--linha);border-radius:999px;padding:8px 16px;cursor:pointer}
+.aba:hover{background:var(--hover)}
+.aba[aria-selected="true"]{background:var(--ativo);border-color:var(--ativo-borda);color:#fff4dc}
+/* carrossel */
+.carrossel{position:relative}
+.trilho{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;gap:0;scrollbar-width:none;border-radius:18px}
+.trilho::-webkit-scrollbar{display:none}
+.produto{flex:0 0 100%;scroll-snap-align:center;display:grid;grid-template-columns:minmax(0,360px) minmax(0,1fr);gap:clamp(20px,4vw,56px);align-items:center;background:linear-gradient(135deg,#132b20,#0d1d15);border:1px solid var(--linha);border-radius:18px;padding:clamp(16px,3vw,36px)}
+.produto-video video{display:block;width:100%;aspect-ratio:9/16;object-fit:cover;background:#091912;border-radius:12px;max-height:72vh}
+.marca-produto{font:600 .78rem var(--serif);letter-spacing:.4em;color:var(--ouro)}
+h3{font:400 clamp(1.6rem,3.4vw,2.5rem)/1.1 var(--serif);margin:8px 0 12px}
+.conteudo{color:var(--ouro);font-size:.6em;white-space:nowrap}
+.descricao{color:var(--suave);font-size:1.05rem;line-height:1.55;margin:0 0 16px;max-width:520px}
+.ben-titulo{font:400 1.05rem var(--serif);color:var(--ouro);margin:0 0 8px}
+.beneficios{list-style:none;padding:0;margin:0 0 18px;display:grid;gap:8px}
+.beneficios li{background:#0b1812a8;border:1px solid #edc58a33;border-radius:10px;padding:9px 14px 9px 36px;position:relative;color:var(--texto)}
+.beneficios li::before{content:"";position:absolute;left:14px;top:50%;width:9px;height:9px;margin-top:-4px;border-radius:50%;background:var(--ouro)}
+.ficha{list-style:none;padding:0;margin:0 0 24px;display:flex;flex-wrap:wrap;gap:6px 18px;font-size:.88rem}
+.ficha li{display:flex;gap:8px;align-items:baseline;color:var(--suave)}
+.ficha li::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--ouro2);flex:none;transform:translateY(-2px)}
+.acoes{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.link{color:var(--suave);font-size:.95rem}
+.seta{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:1px solid var(--ativo-borda);background:#0b1812cc;color:var(--ouro);font-size:1.4rem;cursor:pointer;display:grid;place-items:center}
+.seta:disabled{opacity:.3;cursor:default}
+.seta.ant{left:-22px}.seta.prox{right:-22px}
+.pontos{display:flex;justify-content:center;gap:10px;margin-top:16px}
+.ponto{width:10px;height:10px;border-radius:50%;border:1px solid var(--ouro2);background:transparent;padding:0;cursor:pointer}
+.ponto[aria-current="true"]{background:var(--ouro)}
+/* apresentação */
+.player{display:grid;grid-template-columns:minmax(0,1fr) minmax(240px,300px);gap:clamp(16px,2.4vw,36px)}
+#filme{display:block;width:100%;aspect-ratio:16/9;background:#091912;border-radius:10px}
+.controles{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:12px}
+.controles button{font:inherit;font-size:.88rem;color:var(--menu);background:transparent;border:1px solid #647158;border-radius:8px;padding:8px 13px;cursor:pointer}
+.controles button:disabled{opacity:.4;cursor:default}
+#agora{color:var(--ouro);font-size:.88rem;text-align:center}
+.menu{max-height:var(--altura-video,60vh);overflow-y:auto;overscroll-behavior:contain;scrollbar-color:#627665 transparent;padding-right:4px}
+.secao{padding:10px 8px;border-top:1px solid var(--linha)}
+h4{font:400 1.02rem var(--serif);color:var(--ouro);margin:2px 0 6px}
+.cap{position:relative;overflow:hidden;isolation:isolate;display:flex;justify-content:space-between;align-items:center;gap:8px;width:100%;text-align:left;font:inherit;font-size:.87rem;color:var(--menu);background:transparent;border:1px solid transparent;border-radius:7px;padding:7px 9px;margin:2px 0;cursor:pointer}
+.cap:hover{background:var(--hover)}
+.cap[aria-current="true"]{background:var(--ativo);border-color:var(--ativo-borda);color:#fff4dc}
+.cap[aria-current="true"]::before{content:"";position:absolute;inset:0 auto 0 0;width:var(--played,0%);background:linear-gradient(90deg,#c8974630,#edc58a20);border-right:1px solid #edc58a80;z-index:-1}
+.cap time{font-variant-numeric:tabular-nums;color:#d4b581;font-size:.78rem}
+footer{border-top:1px solid var(--linha);padding:32px 0 48px;color:var(--suave)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:18px 32px;align-items:center;justify-content:space-between}
+footer strong{font:600 1rem var(--serif);letter-spacing:.4em;color:var(--ouro)}
+@media (max-width:860px){
+  .produto{grid-template-columns:1fr}
+  .produto-video{max-width:340px;margin:auto;width:100%}
+  .seta{display:none}
+  .player{grid-template-columns:1fr}
+  .menu{max-height:none}
+}
+@media (prefers-reduced-motion:reduce){.trilho{scroll-behavior:auto}.btn{transition:none}}
+</style>
+<header class="topo"><div class="wrap">
+  <div class="marca">SIER</div>
+  <h1>Produtos naturais</h1>
+  <p class="lead">Prata coloidal, óleo de rícino, sal integral e o desodorante cristal natural ALVA.</p>
+  <a class="btn" href="https://wa.me/5519998501133?text=Ol%C3%A1%21%20Vi%20a%20vitrine%20da%20SIER%20e%20gostaria%20de%20fazer%20um%20pedido." target="_blank" rel="noopener">Fale no WhatsApp · (19) 99850-1133</a>
+</div></header>
+
+<section class="bloco" id="produtos" aria-labelledby="t-produtos"><div class="wrap">
+  <h2 id="t-produtos">Produtos</h2>
+  <p>Assista ao vídeo de cada produto e faça seu pedido direto pelo WhatsApp.</p>
+  <div class="abas" role="tablist" aria-label="Escolha o produto"><button class="aba" role="tab" data-i="0" aria-selected="true">Prata Coloidal</button><button class="aba" role="tab" data-i="1" aria-selected="false">Óleo de Rícino</button><button class="aba" role="tab" data-i="2" aria-selected="false">Sal Integral</button><button class="aba" role="tab" data-i="3" aria-selected="false">Desodorante Cristal Natural</button></div>
+  <div class="carrossel">
+    <button class="seta ant" type="button" aria-label="Produto anterior">‹</button>
+    <div class="trilho" tabindex="0">
+<article class="produto" id="prata-coloidal" aria-label="SIER Prata Coloidal">
+  <div class="produto-video"><video controls playsinline preload="none" poster="midia/prata-coloidal.jpg" src="midia/prata-coloidal.mp4"></video></div>
+  <div class="produto-info">
+    <span class="marca-produto">SIER</span>
+    <h3>Prata Coloidal <span class="conteudo">· 1 L</span></h3>
+    <p class="descricao">Do verde profundo ao brilho dourado: um produto feito com cuidado, do frasco ao rótulo.</p>
+    <p class="ben-titulo">O que é</p>
+    <ul class="beneficios"><li>Partículas de prata suspensas em água</li><li>Produção própria da SIER</li><li>Frasco âmbar de 1 L, que protege da luz</li><li>Tire suas dúvidas de uso pelo WhatsApp</li></ul>
+    <ul class="ficha"><li>Conteúdo: 1 litro</li><li>Frasco de vidro âmbar</li><li>Tampa de rosca</li><li>Rótulo com gravura clássica</li></ul>
+    <div class="acoes">
+      <a class="btn" href="https://wa.me/5519998501133?text=Ol%C3%A1%21%20Vi%20a%20vitrine%20da%20SIER%20e%20tenho%20interesse%20em%20SIER%20Prata%20Coloidal%20%281%20L%29." target="_blank" rel="noopener">Pedir pelo WhatsApp</a>
+      <a class="link" href="mailto:sierprodutosnaturais@gmail.com?subject=Pedido%3A%20SIER%20Prata%20Coloidal">ou por e-mail</a>
+    </div>
+  </div>
+</article>
+<article class="produto" id="oleo-de-ricino" aria-label="SIER Óleo de Rícino">
+  <div class="produto-video"><video controls playsinline preload="none" poster="midia/oleo-de-ricino.jpg" src="midia/oleo-de-ricino.mp4"></video></div>
+  <div class="produto-info">
+    <span class="marca-produto">SIER</span>
+    <h3>Óleo de Rícino <span class="conteudo">· 30 ml</span></h3>
+    <p class="descricao">Da semente à última gota. Pureza que a natureza guarda, em frasco conta-gotas.</p>
+    <p class="ben-titulo">Benefícios</p>
+    <ul class="beneficios"><li>Hidrata e dá brilho aos cabelos</li><li>Fortalece a aparência de cílios e sobrancelhas</li><li>Suaviza pele ressecada, calcanhares e cutículas</li><li>Óleo puro, em frasco conta-gotas</li></ul>
+    <ul class="ficha"><li>Conteúdo: 30 ml</li><li>Frasco de vidro âmbar</li><li>Tampa com conta-gotas</li><li>Rótulo com gravura da mamona</li></ul>
+    <div class="acoes">
+      <a class="btn" href="https://wa.me/5519998501133?text=Ol%C3%A1%21%20Vi%20a%20vitrine%20da%20SIER%20e%20tenho%20interesse%20em%20SIER%20%C3%93leo%20de%20R%C3%ADcino%20%2830%20ml%29." target="_blank" rel="noopener">Pedir pelo WhatsApp</a>
+      <a class="link" href="mailto:sierprodutosnaturais@gmail.com?subject=Pedido%3A%20SIER%20%C3%93leo%20de%20R%C3%ADcino">ou por e-mail</a>
+    </div>
+  </div>
+</article>
+<article class="produto" id="sal-integral" aria-label="SIER Sal Integral">
+  <div class="produto-video"><video controls playsinline preload="none" poster="midia/sal-integral.jpg" src="midia/sal-integral.mp4"></video></div>
+  <div class="produto-info">
+    <span class="marca-produto">SIER</span>
+    <h3>Sal Integral <span class="conteudo">· 1 kg</span></h3>
+    <p class="descricao">Das montanhas, do jeito que a natureza fez. Cada grão tem seu lugar.</p>
+    <p class="ben-titulo">Benefícios</p>
+    <ul class="beneficios"><li>Não refinado: mantém minerais naturais além do sódio</li><li>Grãos naturais, do jeito que a natureza fez</li><li>Sabor marcante para o dia a dia</li><li>Use com moderação: até 5 g de sal por dia (OMS)</li></ul>
+    <ul class="ficha"><li>Conteúdo: 1 kg</li><li>Grãos naturais</li><li>Pacote transparente com fecho</li><li>Rótulo com gravura das montanhas</li></ul>
+    <div class="acoes">
+      <a class="btn" href="https://wa.me/5519998501133?text=Ol%C3%A1%21%20Vi%20a%20vitrine%20da%20SIER%20e%20tenho%20interesse%20em%20SIER%20Sal%20Integral%20%281%20kg%29." target="_blank" rel="noopener">Pedir pelo WhatsApp</a>
+      <a class="link" href="mailto:sierprodutosnaturais@gmail.com?subject=Pedido%3A%20SIER%20Sal%20Integral">ou por e-mail</a>
+    </div>
+  </div>
+</article>
+<article class="produto" id="alva-cristal-natural" aria-label="ALVA Desodorante Cristal Natural">
+  <div class="produto-video"><video controls playsinline preload="none" poster="midia/alva-cristal-natural.jpg" src="midia/alva-cristal-natural.mp4"></video></div>
+  <div class="produto-info">
+    <span class="marca-produto">ALVA</span>
+    <h3>Desodorante Cristal Natural <span class="conteudo">· 60 g</span></h3>
+    <p class="descricao">Frescor que vem da natureza. Desodorante em cristal, sem perfume.</p>
+    <p class="ben-titulo">Benefícios</p>
+    <ul class="beneficios"><li>Eficaz contra o odor</li><li>Sem cloridrato de alumínio e sem parabenos</li><li>Sem perfume</li><li>Dura até 1 ano</li></ul>
+    <ul class="ficha"><li>Conteúdo: 60 g</li><li>Sem cloridrato de alumínio</li><li>Sem parabenos</li><li>Sem perfume</li></ul>
+    <div class="acoes">
+      <a class="btn" href="https://wa.me/5519998501133?text=Ol%C3%A1%21%20Vi%20a%20vitrine%20da%20SIER%20e%20tenho%20interesse%20em%20ALVA%20Desodorante%20Cristal%20Natural%20%2860%20g%29." target="_blank" rel="noopener">Pedir pelo WhatsApp</a>
+      <a class="link" href="mailto:sierprodutosnaturais@gmail.com?subject=Pedido%3A%20ALVA%20Desodorante%20Cristal%20Natural">ou por e-mail</a>
+    </div>
+  </div>
+</article></div>
+    <button class="seta prox" type="button" aria-label="Próximo produto">›</button>
+  </div>
+  <div class="pontos"><button class="ponto" type="button" data-i="0" aria-label="Ir para Prata Coloidal"></button><button class="ponto" type="button" data-i="1" aria-label="Ir para Óleo de Rícino"></button><button class="ponto" type="button" data-i="2" aria-label="Ir para Sal Integral"></button><button class="ponto" type="button" data-i="3" aria-label="Ir para Desodorante Cristal Natural"></button></div>
+</div></section>
+
+<section class="bloco" id="apresentacao" aria-labelledby="t-apres"><div class="wrap">
+  <h2 id="t-apres">Conheça os produtos em detalhes</h2>
+  <p>Apresentação completa, dividida por assunto. Escolha um tema no menu para ir direto ao trecho.</p>
+  <div class="player">
+    <div><video id="filme" controls preload="metadata" src="midia/apresentacao.mp4"></video>
+      <div class="controles"><button id="anterior" type="button">‹ Anterior</button><span id="agora"></span><button id="proximo" type="button">Próximo ›</button></div></div>
+    <nav class="menu" aria-label="Assuntos da apresentação"><div class="secao"><h4>Prata coloidal</h4><button class="cap" data-start="0.000" data-end="11.440"><span>Composição</span><time>0:00</time></button><button class="cap" data-start="11.440" data-end="66.760"><span>Ações descritas no texto</span><time>0:11</time></button><button class="cap" data-start="66.760" data-end="114.560"><span>Outras alegações</span><time>1:06</time></button><button class="cap" data-start="114.560" data-end="135.208"><span>Fadiga, metabolismo e outras alegações</span><time>1:54</time></button></div><div class="secao"><h4>Óleo de rícino</h4><button class="cap" data-start="135.208" data-end="172.600"><span>Usos internos</span><time>2:15</time></button><button class="cap" data-start="172.600" data-end="231.760"><span>Usos externos</span><time>2:52</time></button><button class="cap" data-start="231.760" data-end="260.340"><span>Precauções</span><time>3:51</time></button><button class="cap" data-start="260.340" data-end="268.291"><span>Conservação</span><time>4:20</time></button></div><div class="secao"><h4>Sal integral</h4><button class="cap" data-start="268.291" data-end="290.760"><span>Minerais e sódio</span><time>4:28</time></button><button class="cap" data-start="290.760" data-end="384.410"><span>Funções mencionadas no texto</span><time>4:50</time></button><button class="cap" data-start="384.410" data-end="408.930"><span>Sal integral e sal refinado</span><time>6:24</time></button><button class="cap" data-start="408.930" data-end="448.916"><span>Moderação no consumo</span><time>6:48</time></button></div><div class="secao"><h4>ALVA</h4><button class="cap" data-start="448.916" data-end="477.939"><span>Desodorante cristal natural</span><time>7:28</time></button></div></nav>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <strong>SIER</strong>
+  <span>WhatsApp <a href="https://wa.me/5519998501133?text=Ol%C3%A1%21%20Vi%20a%20vitrine%20da%20SIER." target="_blank" rel="noopener">(19) 99850-1133</a> · <a href="mailto:sierprodutosnaturais@gmail.com">sierprodutosnaturais@gmail.com</a></span>
+</div></footer>
+
+<script>
+// ---- carrossel de produtos ----
+const trilho=document.querySelector('.trilho');
+const cards=[...trilho.querySelectorAll('.produto')];
+const abas=[...document.querySelectorAll('.aba')];
+const pontos=[...document.querySelectorAll('.ponto')];
+const ant=document.querySelector('.seta.ant'),prox=document.querySelector('.seta.prox');
+let atual=0;
+function marcar(i){
+  atual=i;
+  abas.forEach((a,k)=>a.setAttribute('aria-selected',String(k===i)));
+  pontos.forEach((p,k)=>{if(k===i)p.setAttribute('aria-current','true');else p.removeAttribute('aria-current');});
+  ant.disabled=i===0;prox.disabled=i===cards.length-1;
+  cards.forEach((c,k)=>{if(k!==i){const v=c.querySelector('video');if(!v.paused)v.pause();}});
+}
+let indo=false,fimIda;
+function ir(i){i=Math.max(0,Math.min(cards.length-1,i));indo=true;clearTimeout(fimIda);fimIda=setTimeout(()=>indo=false,900);trilho.scrollTo({left:i*trilho.clientWidth,behavior:'smooth'});marcar(i);}
+abas.forEach((a,i)=>a.addEventListener('click',()=>ir(i)));
+pontos.forEach((p,i)=>p.addEventListener('click',()=>ir(i)));
+ant.addEventListener('click',()=>ir(atual-1));prox.addEventListener('click',()=>ir(atual+1));
+trilho.addEventListener('keydown',ev=>{if(ev.key==='ArrowRight'){ev.preventDefault();ir(atual+1);}if(ev.key==='ArrowLeft'){ev.preventDefault();ir(atual-1);}});
+let t;trilho.addEventListener('scroll',()=>{if(indo)return;clearTimeout(t);t=setTimeout(()=>{const i=Math.round(trilho.scrollLeft/trilho.clientWidth);if(i!==atual)marcar(i);},90);});
+marcar(0);
+
+// ---- apresentação com capítulos ----
+const video=document.getElementById('filme');
+const ajusta=()=>document.documentElement.style.setProperty('--altura-video',video.getBoundingClientRect().height+'px');
+new ResizeObserver(ajusta).observe(video);ajusta();
+const caps=[...document.querySelectorAll('.cap')];
+const anterior=document.getElementById('anterior'),proximo=document.getElementById('proximo'),agora=document.getElementById('agora');
+let cur=-1;
+function destaca(){
+  const i=caps.findIndex(el=>video.currentTime>=+el.dataset.start&&video.currentTime<+el.dataset.end);
+  if(i!==cur){caps[cur]?.removeAttribute('aria-current');caps[i]?.setAttribute('aria-current','true');cur=i;}
+  anterior.disabled=i<=0;proximo.disabled=i<0||i>=caps.length-1;
+  agora.textContent=caps[i]?.querySelector('span').textContent??'';
+  if(caps[i]){const s=+caps[i].dataset.start,e=+caps[i].dataset.end;caps[i].style.setProperty('--played',100*Math.min(1,Math.max(0,(video.currentTime-s)/(e-s)))+'%');}
+}
+function vai(i){const c=caps[i];if(!c)return;const go=()=>{video.currentTime=+c.dataset.start;destaca();video.play().catch(()=>{});};
+  if(video.readyState)go();else video.addEventListener('loadedmetadata',go,{once:true});}
+caps.forEach((c,i)=>c.addEventListener('click',()=>vai(i)));
+anterior.addEventListener('click',()=>vai(cur-1));proximo.addEventListener('click',()=>vai(cur+1));
+video.addEventListener('timeupdate',destaca);video.addEventListener('seeked',destaca);destaca();
+// ao tocar a apresentação, pausa os vídeos dos produtos (e vice-versa)
+document.querySelectorAll('video').forEach(v=>v.addEventListener('play',()=>document.querySelectorAll('video').forEach(o=>{if(o!==v&&!o.paused)o.pause();})));
+</script></html>
