@@ -203,7 +203,8 @@ const caps=[...document.querySelectorAll('.cap')];
 const anterior=document.getElementById('anterior'),proximo=document.getElementById('proximo'),agora=document.getElementById('agora');
 let cur=-1;
 function destaca(){
-  const i=caps.findIndex(el=>video.currentTime>=+el.dataset.start&&video.currentTime<+el.dataset.end);
+  let i=caps.findIndex(el=>video.currentTime>=+el.dataset.start&&video.currentTime<+el.dataset.end);
+  if(i<0&&caps.length&&video.currentTime>=+caps[caps.length-1].dataset.start)i=caps.length-1; // fim do vídeo: mantém o último capítulo
   if(i!==cur){caps[cur]?.removeAttribute('aria-current');caps[i]?.setAttribute('aria-current','true');cur=i;}
   anterior.disabled=i<=0;proximo.disabled=i<0||i>=caps.length-1;
   agora.textContent=caps[i]?.querySelector('span').textContent??'';
