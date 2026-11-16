@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SIER | Produtos naturais</title>
+<meta name="description" content="Prata coloidal, óleo de rícino, sal integral e o desodorante cristal natural ALVA. Compre online com frete calculado e pagamento por Pix, cartão ou boleto.">
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<div class="aviso-teste" id="aviso-teste" hidden>Modo de teste: frete e pagamento simulados. Nenhuma cobrança é feita.</div>
+
+<header class="topo">
+  <div class="wrap topo-barra">
+    <div class="marca">SIER</div>
+    <button class="btn-carrinho" type="button" id="abrir-carrinho" aria-label="Abrir o carrinho">
+      Carrinho <span class="contador" id="contador">0</span>
+    </button>
+  </div>
+  <div class="wrap heroi">
+    <h1>Produtos naturais</h1>
+    <p class="lead">Prata coloidal, óleo de rícino, sal integral e o desodorante cristal natural ALVA. Escolha, calcule o frete e pague por Pix, cartão ou boleto.</p>
+    <div class="heroi-acoes">
+      <a class="btn" href="#produtos">Ver produtos</a>
+      <a class="btn btn-linha" id="whats-topo" target="_blank" rel="noopener">Fale no WhatsApp</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="bloco" id="produtos" aria-labelledby="t-produtos">
+    <div class="wrap">
+      <h2 id="t-produtos">Produtos</h2>
+      <p class="sub">Assista ao vídeo de cada produto e adicione ao carrinho.</p>
+      <div class="grade" id="grade"></div>
+    </div>
+  </section>
+
+  <section class="bloco" id="pedido" aria-labelledby="t-pedido">
+    <div class="wrap">
+      <h2 id="t-pedido">Seu pedido</h2>
+      <div class="pedido">
+        <div class="coluna">
+          <div class="painel">
+            <h3>1. Produtos</h3>
+            <div id="itens"></div>
+            <p class="vazio" id="vazio">Seu carrinho está vazio. <a href="#produtos">Escolha os produtos</a>.</p>
+          </div>
+          <div class="painel">
+            <h3>2. Frete</h3>
+            <form class="linha-cep" id="form-cep">
+              <label for="cep">CEP de entrega</label>
+              <div class="campo-botao">
+                <input id="cep" inputmode="numeric" autocomplete="postal-code" placeholder="00000-000" maxlength="9" required>
+                <button class="btn btn-pequeno" type="submit">Calcular</button>
+              </div>
+            </form>
+            <div id="fretes" role="radiogroup" aria-label="Opções de frete"></div>
+            <p class="msg" id="msg-frete" role="status"></p>
+          </div>
+        </div>
+        <div class="coluna">
+          <form class="painel" id="form-dados" novalidate>
+            <h3>3. Seus dados</h3>
+            <div class="campos">
+              <label class="c2">Nome completo<input name="nome" autocomplete="name" required></label>
+              <label>CPF<input name="cpf" inputmode="numeric" maxlength="14" required></label>
+              <label>Celular com DDD<input name="telefone" inputmode="tel" autocomplete="tel" maxlength="15" required></label>
+              <label class="c2">E-mail<input name="email" type="email" autocomplete="email" required></label>
+              <label class="c2">Rua<input name="rua" autocomplete="address-line1" required></label>
+              <label>Número<input name="numero" required></label>
+              <label>Complemento<input name="complemento" autocomplete="address-line2"></label>
+              <label>Bairro<input name="bairro" required></label>
+              <label>Cidade<input name="cidade" autocomplete="address-level2" required></label>
+              <label>Estado<input name="uf" maxlength="2" autocomplete="address-level1" required></label>
+            </div>
+            <div class="resumo">
+              <div><span>Produtos</span><strong id="r-sub">R$ 0,00</strong></div>
+              <div><span>Frete</span><strong id="r-frete">calcule pelo CEP</strong></div>
+              <div class="total"><span>Total</span><strong id="r-total">R$ 0,00</strong></div>
+            </div>
+            <button class="btn btn-largo" type="submit" id="pagar">Ir para o pagamento</button>
+            <p class="msg" id="msg-pedido" role="status"></p>
+            <p class="seguro">Pagamento seguro pelo Asaas: Pix, cartão de crédito ou boleto. Você recebe a confirmação por e-mail.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bloco" id="apresentacao" aria-labelledby="t-apres">
+    <div class="wrap">
+      <h2 id="t-apres">Conheça os produtos em detalhes</h2>
+      <p class="sub">Apresentação completa, dividida por assunto. Escolha um tema para ir direto ao trecho.</p>
+      <div class="player">
+        <div>
+          <video id="filme" controls preload="none" playsinline></video>
+          <div class="controles"><button id="anterior" type="button">‹ Anterior</button><span id="agora"></span><button id="proximo" type="button">Próximo ›</button></div>
+        </div>
+        <nav class="menu" id="menu" aria-label="Assuntos da apresentação"></nav>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap rodape">
+    <div><strong class="marca">SIER</strong><p id="empresa"></p></div>
+    <div><p>WhatsApp <a id="whats-rodape" target="_blank" rel="noopener"></a><br>E-mail <a id="email-rodape"></a></p></div>
+    <div><p>Trocas e devoluções em até 7 dias após o recebimento, conforme o Código de Defesa do Consumidor. Fale com a gente pelo WhatsApp.</p></div>
+  </div>
+</footer>
+
+<div class="barra-carrinho" id="barra" hidden>
+  <span id="barra-texto"></span>
+  <a class="btn btn-pequeno" href="#pedido">Finalizar pedido</a>
+</div>
+
+<script src="app.js" type="module"></script>
+</body>
+</html>

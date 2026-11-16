@@ -1,0 +1,82 @@
+{
+  "marca": "SIER",
+  "titulo": "Conhecimento dos Produtos",
+  "titulo_aba": "Sier | Conhecimento dos Produtos",
+  "video": "Sier-Apresentacao-Completa-com-ALVA.mp4",
+  "duracao": 477.939,
+  "proporcao": "16/9",
+  "secoes": [
+    {
+      "titulo": "Prata coloidal",
+      "capitulos": [
+        {
+          "titulo": "Composição",
+          "inicio": 0.0
+        },
+        {
+          "titulo": "Ações descritas no texto",
+          "inicio": 11.44
+        },
+        {
+          "titulo": "Outras alegações",
+          "inicio": 66.76
+        },
+        {
+          "titulo": "Fadiga, metabolismo e outras alegações",
+          "inicio": 114.56
+        }
+      ]
+    },
+    {
+      "titulo": "Óleo de rícino",
+      "capitulos": [
+        {
+          "titulo": "Usos internos",
+          "inicio": 135.208
+        },
+        {
+          "titulo": "Usos externos",
+          "inicio": 172.6
+        },
+        {
+          "titulo": "Precauções",
+          "inicio": 231.76
+        },
+        {
+          "titulo": "Conservação",
+          "inicio": 260.34
+        }
+      ]
+    },
+    {
+      "titulo": "Sal integral",
+      "capitulos": [
+        {
+          "titulo": "Minerais e sódio",
+          "inicio": 268.291
+        },
+        {
+          "titulo": "Funções mencionadas no texto",
+          "inicio": 290.76
+        },
+        {
+          "titulo": "Sal integral e sal refinado",
+          "inicio": 384.41
+        },
+        {
+          "titulo": "Moderação no consumo",
+          "inicio": 408.93
+        }
+      ]
+    },
+    {
+      "titulo": "ALVA",
+      "capitulos": [
+        {
+          "titulo": "Desodorante cristal natural",
+          "inicio": 448.916
+        }
+      ]
+    }
+  ]
+}

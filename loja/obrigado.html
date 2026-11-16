@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SIER | Pedido recebido</title>
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<header class="topo"><div class="wrap topo-barra"><div class="marca">SIER</div></div></header>
+<main class="wrap" style="padding:48px 0 80px;max-width:640px">
+  <h1>Pedido recebido</h1>
+  <p class="lead" id="texto">Assim que o pagamento for confirmado, a SIER separa e envia o seu pedido. Você recebe o código de rastreio por e-mail.</p>
+  <div class="painel" id="teste" hidden>
+    <h3>Modo de teste</h3>
+    <p style="margin:0;color:var(--suave)">Este pedido foi simulado. Com as contas da SIER ligadas, aqui a pessoa veria a página de pagamento do Asaas com Pix, cartão e boleto.</p>
+    <p style="margin:12px 0 0">Pedido <strong id="pedido"></strong> · Total <strong id="total"></strong></p>
+  </div>
+  <p style="margin-top:28px"><a class="btn" href="./">Voltar para a loja</a></p>
+</main>
+<script>
+  const q = new URLSearchParams(location.search);
+  if (q.get("teste")) {
+    document.getElementById("teste").hidden = false;
+    document.getElementById("pedido").textContent = q.get("pedido") || "";
+    document.getElementById("total").textContent = Number(q.get("total") || 0).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+  }
+</script>
+</body>
+</html>
