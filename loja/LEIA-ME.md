@@ -81,3 +81,16 @@ Próximo passo possível: um webhook do Asaas que, ao confirmar o pagamento, já
 - `capitulos.json`: capítulos da apresentação.
 - `api/`: funções da Vercel (`frete.js`, `pedido.js`, `status.js` e `_lib.js`).
 - Os vídeos vêm da vitrine no GitHub Pages (`midia_base` no catálogo).
+
+## Publicação para avaliação — 18/11/2026
+
+- Link público: https://sier-loja.vercel.app/
+- Vercel: equipe aunexa, projeto sier-loja.
+- Publicado a partir desta pasta, com MODO_TESTE=1. Pagamento e frete são simulados.
+- Prévia para compartilhamento: metadados Open Graph no HTML e imagem assets/sier-compartilhar.jpg (1200 × 630).
+- Esta publicação foi feita por CLI; novos commits no GitHub não publicam automaticamente.
+
+Para atualizar após autenticar na Vercel, execute dentro de loja:
+
+    vercel deploy --prod --yes --scope aunexa --project sier-loja --env MODO_TESTE=1
+
