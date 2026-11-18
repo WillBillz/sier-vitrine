@@ -94,3 +94,8 @@ Para atualizar após autenticar na Vercel, execute dentro de loja:
 
     vercel deploy --prod --yes --scope aunexa --project sier-loja --env MODO_TESTE=1
 
+### Link personalizado para Elton
+
+https://sier-loja.vercel.app/elton serve elton.html com título, descrição e imagem próprios para compartilhamento. A URL nova evita reutilizar a identificação do link anterior; a exibição final da prévia depende do cliente WhatsApp.
+
+Ao modificar a landing page, atualize também elton.html, preservando os metadados personalizados e os caminhos absolutos. Não há redirecionamento JavaScript nessa página.
