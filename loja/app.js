@@ -32,6 +32,7 @@ const subtotal = () => itens().reduce((s, it) => s + produto(it.id).preco * it.q
 
 function mudou() {
   salvar();
+  fecharDados();
   // carrinho mudou: o frete cotado deixa de valer
   fretes = []; freteEscolhido = null; cepCotado = "";
   $("#fretes").replaceChildren();
@@ -44,6 +45,8 @@ function definir(id, qtd) {
   if (qtd) carrinho[id] = qtd; else delete carrinho[id];
   mudou();
   desenharGrade();
+  $("#aviso-sacola").textContent = produto(id).nome + (qtd ? ": " + qtd + " na sacola." : " removido da sacola.");
+  $("#p-" + id + " .comprar button")?.focus({preventScroll:true});
 }
 
 // ---------- vitrine ----------
@@ -51,7 +54,10 @@ function desenharGrade() {
   const grade = $("#grade");
   grade.replaceChildren(...CAT.produtos.map((p) => {
     const qtd = carrinho[p.id] || 0;
-    const video = el("video", { controls: "", playsinline: "", preload: "none", poster: L.midia_base + p.id + ".jpg", src: L.midia_base + p.id + ".mp4" });
+    const momentos = {"prata-coloidal":"PARA CONHECER DE PERTO", "oleo-de-ricino":"GOTA A GOTA, SEU MOMENTO", "sal-integral":"À MESA, COM SABOR", "alva-cristal-natural":"LEVEZA NA ROTINA"};
+    const imagem = el("img", { src: "assets/" + p.id + ".jpg", alt: p.marca + " " + p.nome + ", " + p.conteudo, loading: "lazy", width: "720", height: "1280" });
+    const assistir = el("button", {type:"button", class:"assistir", onclick:()=>abrirVideo(p)}, "▷ Assistir ao vídeo");
+    const midia = el("div", {class:"produto-midia"}, imagem, assistir);
     const acoes = qtd
       ? el("div", { class: "comprar" },
           el("div", { class: "qtd", role: "group", "aria-label": "Quantidade de " + p.nome },
@@ -61,9 +67,9 @@ function desenharGrade() {
           el("a", { class: "btn btn-pequeno btn-linha", href: "#pedido" }, "Finalizar"))
       : el("div", { class: "comprar" }, el("button", { class: "btn btn-pequeno", type: "button", onclick: () => definir(p.id, 1) }, "Adicionar ao carrinho"));
     return el("article", { class: "produto", id: "p-" + p.id },
-      el("div", {}, video),
+      midia,
       el("div", {},
-        el("span", { class: "marca-produto" }, p.marca),
+        el("span", { class: "marca-produto" }, momentos[p.id] || p.marca),
         el("h3", {}, p.nome),
         el("span", { class: "conteudo" }, p.conteudo),
         el("div", { class: "preco" }, brl(p.preco), ...(p.provisorio ? [el("small", {}, "preço provisório")] : [])),
@@ -97,10 +103,57 @@ function desenharPedido() {
   $("#r-sub").textContent = brl(sub);
   $("#r-frete").textContent = freteEscolhido ? `${brl(freteEscolhido.preco)} · ${freteEscolhido.nome}` : "calcule pelo CEP";
   $("#r-total").textContent = brl(sub + (freteEscolhido?.preco || 0));
+  atualizarEtapa();
   const barra = $("#barra");
   barra.hidden = !n || pedidoVisivel;
   $("#barra-texto").textContent = `${n} ${n === 1 ? "item" : "itens"} · ${brl(sub)}`;
 }
+
+// Etapas do pedido: resumo sempre visível; dados somente após frete.
+function fecharDados() {
+  $("#dados-etapa").hidden = true;
+  $("#pagar").hidden = true;
+  $("#continuar-dados").hidden = false;
+  $("#continuar-dados").setAttribute("aria-expanded", "false");
+}
+function atualizarEtapa() {
+  const pronto = itens().length > 0 && freteEscolhido && cepCotado === digitos($("#cep").value);
+  $("#continuar-dados").disabled = !pronto;
+  $("#orientacao-etapa").textContent = pronto
+    ? "Frete e total disponíveis abaixo. Confira os valores antes de informar seus dados."
+    : "Adicione um produto e calcule o frete para continuar.";
+}
+$("#continuar-dados").addEventListener("click", () => {
+  if (!freteEscolhido || cepCotado !== digitos($("#cep").value) || !itens().length) return;
+  $("#dados-etapa").hidden = false;
+  $("#pagar").hidden = false;
+  $("#continuar-dados").hidden = true;
+  $("#continuar-dados").setAttribute("aria-expanded", "true");
+  $("#form-dados").elements.nome.focus();
+});
+$("#cep").addEventListener("input", () => {
+  if (cepCotado && cepCotado !== digitos($("#cep").value)) {
+    fretes = []; freteEscolhido = null; cepCotado = "";
+    $("#fretes").replaceChildren();
+    fecharDados(); desenharPedido();
+  }
+});
+
+// Vídeo sob demanda, com fechamento por botão ou Escape.
+const dialogVideo = $("#video-dialog");
+const videoProduto = $("#video-produto");
+function abrirVideo(p) {
+  $("#video-titulo").textContent = p.nome;
+  $("#video-erro").hidden = true;
+  videoProduto.poster = "assets/" + p.id + ".jpg";
+  videoProduto.src = L.midia_base + p.id + ".mp4";
+  document.querySelectorAll("video").forEach(v => v.pause());
+  dialogVideo.showModal();
+  videoProduto.play().catch(() => {});
+}
+$("#fechar-video").addEventListener("click", () => dialogVideo.close());
+dialogVideo.addEventListener("close", () => { videoProduto.pause(); videoProduto.removeAttribute("src"); videoProduto.load(); });
+videoProduto.addEventListener("error", () => { if (dialogVideo.open) $("#video-erro").hidden = false; });
 
 // máscaras simples
 const mascara = (input, fn) => input.addEventListener("input", () => { input.value = fn(digitos(input.value)); });
@@ -119,7 +172,7 @@ async function preencherEndereco(cep) {
     if (!f.bairro.value) f.bairro.value = d.bairro || "";
     f.cidade.value = d.localidade || f.cidade.value;
     f.uf.value = d.uf || f.uf.value;
-    (f.rua.value ? f.numero : f.rua).focus({ preventScroll: true });
+    // O foco permanece com a pessoa durante o preenchimento automático.
   } catch { /* sem preenchimento automático: a pessoa digita */ }
 }
 
@@ -128,11 +181,16 @@ $("#form-cep").addEventListener("submit", async (ev) => {
   const cep = digitos($("#cep").value);
   if (!itens().length) return msg("#msg-frete", "Adicione um produto antes de calcular o frete.", "erro");
   if (cep.length !== 8) return msg("#msg-frete", "Digite um CEP com 8 números.", "erro");
+  fecharDados();
+  freteEscolhido = null; cepCotado = "";
+  desenharPedido();
+  const itensCotados = JSON.stringify(itens());
   msg("#msg-frete", "Calculando o frete…");
   $("#fretes").replaceChildren();
   try {
     const r = await fetch("api/frete", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ cep, itens: itens() }) });
     const d = await r.json();
+    if (cep !== digitos($("#cep").value) || itensCotados !== JSON.stringify(itens())) return;
     if (!r.ok) throw new Error(d.erro);
     fretes = d.opcoes; cepCotado = cep; freteEscolhido = fretes[0];
     $("#fretes").replaceChildren(...fretes.map((o, i) =>
@@ -189,6 +247,7 @@ f.addEventListener("submit", async (ev) => {
 
 // ---------- contato e modo de teste ----------
 const wa = (t) => `https://wa.me/${L.whatsapp_numero}?text=${encodeURIComponent(t)}`;
+document.querySelectorAll("[data-contato]").forEach(a => { a.href=wa("Olá! Gostaria de saber mais sobre os produtos SIER."); a.target="_blank"; a.rel="noopener"; });
 $("#whats-topo").href = wa("Olá! Vi a loja da SIER e tenho uma dúvida.");
 $("#whats-rodape").href = wa("Olá! Vi a loja da SIER.");
 $("#whats-rodape").textContent = L.whatsapp;
@@ -233,3 +292,18 @@ filme.addEventListener("timeupdate", destaca); filme.addEventListener("seeked", 
 filme.addEventListener("play", () => document.querySelectorAll("video").forEach((o) => o !== filme && !o.paused && o.pause()));
 new ResizeObserver(() => document.documentElement.style.setProperty("--altura-video", filme.getBoundingClientRect().height + "px")).observe(filme);
 destaca();
+
+
+// Movimento de entrada discreto, sem esconder conteúdo antes de carregar.
+const movimentoReduzido = matchMedia("(prefers-reduced-motion: reduce)");
+if (!movimentoReduzido.matches) {
+  const entrada = new IntersectionObserver(entries => {
+    entries.forEach(({target, isIntersecting}) => {
+      if (!isIntersecting) return;
+      target.animate([{transform:"translateY(18px)",opacity:0.65},{transform:"translateY(0)",opacity:1}],
+        {duration:550,easing:"cubic-bezier(.2,.7,.3,1)"});
+      entrada.unobserve(target);
+    });
+  }, {threshold:0.12});
+  document.querySelectorAll(".cabecalho-secao,.essencia-texto,.essencia-foto,.faq-grid").forEach(el=>entrada.observe(el));
+}

@@ -10,35 +10,67 @@
 <body>
 <div class="aviso-teste" id="aviso-teste" hidden>Modo de teste: frete e pagamento simulados. Nenhuma cobrança é feita.</div>
 
+<a class="pular" href="#produtos">Pular para os produtos</a>
 <header class="topo">
   <div class="wrap topo-barra">
-    <div class="marca">SIER</div>
-    <button class="btn-carrinho" type="button" id="abrir-carrinho" aria-label="Abrir o carrinho">
-      Carrinho <span class="contador" id="contador">0</span>
-    </button>
+    <a class="marca" href="#" aria-label="SIER, início">SIER<span>PRODUTOS NATURAIS</span></a>
+    <nav class="nav-topo" aria-label="Navegação principal"><a href="#produtos">A coleção</a><a href="#essencia">Nossa essência</a><a href="#apresentacao">Conheça de perto</a></nav>
+    <button class="btn-carrinho" type="button" id="abrir-carrinho" aria-label="Abrir o carrinho">Sacola <span class="contador" id="contador" aria-live="polite">0</span></button>
   </div>
   <div class="wrap heroi">
-    <h1>Produtos naturais</h1>
-    <p class="lead">Prata coloidal, óleo de rícino, sal integral e o desodorante cristal natural ALVA. Escolha, calcule o frete e pague por Pix, cartão ou boleto.</p>
-    <div class="heroi-acoes">
-      <a class="btn" href="#produtos">Ver produtos</a>
-      <a class="btn btn-linha" id="whats-topo" target="_blank" rel="noopener">Fale no WhatsApp</a>
+    <div class="heroi-texto">
+      <p class="eyebrow"><span></span> SIER · PRODUTOS NATURAIS</p>
+      <h1>Da gota ao grão.<br>A natureza nos<br><em>pequenos gestos.</em></h1>
+      <p class="lead">Uma gota no seu momento de cuidado. Uma pitada na receita de casa. Descubra os produtos SIER e encontre um lugar para o natural na sua rotina.</p>
+      <div class="heroi-acoes"><a class="btn" href="#produtos">Descobrir os produtos <span aria-hidden="true">↗</span></a><a class="link-sutil" id="whats-topo" target="_blank" rel="noopener">Converse com a SIER <span aria-hidden="true">→</span></a></div>
+      <div class="heroi-nota"><span class="nota-simbolo" aria-hidden="true">✳</span><p>Óleo de rícino · Sal integral<br><strong>Prata coloidal · Cristal natural ALVA</strong></p></div>
+    </div>
+    <div class="heroi-cena"><div class="heroi-visual">
+      <img src="assets/oleo-de-ricino.jpg" alt="Óleo de Rícino SIER em frasco âmbar com conta-gotas, sobre uma base de pedra verde" fetchpriority="high" width="720" height="1280">
+      <span class="selo">NATUREZA<br><i>em essência</i><br>SIER</span>
+      <a class="legenda-hero" href="#p-oleo-de-ricino"><span>01 / UMA GOTA DE CUIDADO<strong>Óleo de Rícino <small>30 ml</small></strong></span><b aria-hidden="true">↗</b></a>
+    </div>
+    <div class="heroi-secundario"><p class="anotacao">o simples<br>tem seu encanto.</p><a href="#p-sal-integral" class="foto-grao"><img src="assets/sal-integral.jpg" alt="Sal Integral SIER em embalagem de 1 kg" width="720" height="1280"><span>02 / UMA PITADA DE SABOR <strong>Sal Integral ↗</strong></span></a></div>
+    <span class="cena-rodape" aria-hidden="true">GOTA. GRÃO. GESTO.</span>
     </div>
   </div>
+  <div class="faixa"><div class="wrap"><span>Escolha com calma</span><i aria-hidden="true">✦</i><span>Frete calculado pelo CEP</span><i aria-hidden="true">✦</i><span>Pix, cartão ou boleto</span><i aria-hidden="true">✦</i><span>Atendimento pelo WhatsApp</span></div></div>
 </header>
 
 <main>
   <section class="bloco" id="produtos" aria-labelledby="t-produtos">
     <div class="wrap">
-      <h2 id="t-produtos">Produtos</h2>
-      <p class="sub">Assista ao vídeo de cada produto e adicione ao carrinho.</p>
+      <div class="cabecalho-secao"><div><p class="eyebrow">ENCONTRE O SEU PRÓXIMO RITUAL</p><h2 id="t-produtos">Pequenos gestos.<br><em>Boas escolhas.</em></h2></div><p class="sub">Da cozinha ao cuidado pessoal, cada produto tem sua história. Conheça de perto e escolha o seu.</p></div>
       <div class="grade" id="grade"></div>
     </div>
   </section>
 
+  <section class="essencia" id="essencia" aria-labelledby="t-essencia">
+    <div class="wrap essencia-grid"><div class="essencia-foto"><img src="assets/sal-integral.jpg" alt="Sal Integral SIER" loading="lazy" width="720" height="1280"><span>DA NOSSA SELEÇÃO PARA A SUA ROTINA</span></div>
+    <div class="essencia-texto"><p class="eyebrow">A ESSÊNCIA SIER</p><h2 id="t-essencia">O natural não precisa<br>ficar longe.<br><em>Ele cabe no seu dia.</em></h2><p>Na receita que reúne a família. Na pausa em frente ao espelho. Na atenção que você dedica a si. É nesses pequenos momentos que queremos estar.</p><p>Escolha no seu tempo. Veja os ingredientes, conheça os produtos e, se precisar de uma mão, fale com a gente. A SIER está a uma conversa de distância.</p><a class="link-sutil" data-contato href="#">Tirar uma dúvida pelo WhatsApp <span aria-hidden="true">↗</span></a></div></div>
+  </section>
+  <section class="bloco" id="apresentacao" aria-labelledby="t-apres">
+    <div class="wrap">
+      <p class="eyebrow">DÊ PLAY. CHEGUE MAIS PERTO.</p><h2 id="t-apres">Tem mais em cada detalhe.</h2>
+      <p class="sub">Conheça os produtos em vídeo. Escolha um assunto e vá direto ao que desperta sua curiosidade.</p>
+      <div class="player">
+        <div>
+          <video id="filme" controls preload="none" playsinline poster="assets/prata-coloidal.jpg"></video>
+          <div class="controles"><button id="anterior" type="button">‹ Anterior</button><span id="agora"></span><button id="proximo" type="button">Próximo ›</button></div>
+        </div>
+        <nav class="menu" id="menu" aria-label="Assuntos da apresentação"></nav>
+      </div>
+    </div>
+  </section>
+  <section class="bloco duvidas" aria-labelledby="t-duvidas"><div class="wrap faq-grid"><div><p class="eyebrow">PODE PERGUNTAR</p><h2 id="t-duvidas">Vamos conversar?</h2><p class="sub">As respostas para seguir com tranquilidade.</p></div><div>
+    <details><summary>Como faço meu pedido?</summary><p>Adicione seus produtos à sacola, calcule o frete com o CEP e preencha seus dados. Depois, siga para o pagamento.</p></details>
+    <details><summary>Quais são as formas de pagamento?</summary><p>O pagamento é feito pelo Asaas, com opções de Pix, cartão de crédito ou boleto. Em modo de teste, não há cobrança real.</p></details>
+    <details><summary>Como descubro o valor do frete?</summary><p>Na seção “Seu pedido”, informe o CEP de entrega. Você verá as opções de frete e os prazos disponíveis antes de continuar.</p></details>
+    <details><summary>Posso conversar com alguém antes de comprar?</summary><p>Sim. Use o link “Converse com a SIER” no início da página ou o WhatsApp no rodapé para tirar suas dúvidas diretamente com a equipe.</p></details>
+  </div></div></section>
   <section class="bloco" id="pedido" aria-labelledby="t-pedido">
     <div class="wrap">
-      <h2 id="t-pedido">Seu pedido</h2>
+      <p class="eyebrow">ESCOLHIDOS POR VOCÊ</p><h2 id="t-pedido">Seu próximo ritual<br>começa aqui.</h2><p class="sub">Primeiro, confira sua sacola e o frete. Seus dados ficam para a próxima etapa.</p>
       <div class="pedido">
         <div class="coluna">
           <div class="painel">
@@ -61,7 +93,11 @@
         </div>
         <div class="coluna">
           <form class="painel" id="form-dados" novalidate>
-            <h3>3. Seus dados</h3>
+            <h3>3. Confira e continue</h3>
+            <p id="orientacao-etapa" class="sub" role="status">Adicione um produto e calcule o frete para continuar.</p>
+            <button class="btn btn-largo" id="continuar-dados" type="button" aria-controls="dados-etapa" aria-expanded="false" disabled>Continuar para meus dados</button>
+            <div id="dados-etapa" hidden>
+            <h3>Dados para entrega e pagamento</h3>
             <div class="campos">
               <label class="c2">Nome completo<input name="nome" autocomplete="name" required></label>
               <label>CPF<input name="cpf" inputmode="numeric" maxlength="14" required></label>
@@ -74,12 +110,13 @@
               <label>Cidade<input name="cidade" autocomplete="address-level2" required></label>
               <label>Estado<input name="uf" maxlength="2" autocomplete="address-level1" required></label>
             </div>
+            </div>
             <div class="resumo">
               <div><span>Produtos</span><strong id="r-sub">R$ 0,00</strong></div>
               <div><span>Frete</span><strong id="r-frete">calcule pelo CEP</strong></div>
               <div class="total"><span>Total</span><strong id="r-total">R$ 0,00</strong></div>
             </div>
-            <button class="btn btn-largo" type="submit" id="pagar">Ir para o pagamento</button>
+            <button class="btn btn-largo" type="submit" id="pagar" hidden>Ir para o pagamento</button>
             <p class="msg" id="msg-pedido" role="status"></p>
             <p class="seguro">Pagamento seguro pelo Asaas: Pix, cartão de crédito ou boleto. Você recebe a confirmação por e-mail.</p>
           </form>
@@ -88,19 +125,6 @@
     </div>
   </section>
 
-  <section class="bloco" id="apresentacao" aria-labelledby="t-apres">
-    <div class="wrap">
-      <h2 id="t-apres">Conheça os produtos em detalhes</h2>
-      <p class="sub">Apresentação completa, dividida por assunto. Escolha um tema para ir direto ao trecho.</p>
-      <div class="player">
-        <div>
-          <video id="filme" controls preload="none" playsinline></video>
-          <div class="controles"><button id="anterior" type="button">‹ Anterior</button><span id="agora"></span><button id="proximo" type="button">Próximo ›</button></div>
-        </div>
-        <nav class="menu" id="menu" aria-label="Assuntos da apresentação"></nav>
-      </div>
-    </div>
-  </section>
 </main>
 
 <footer>
@@ -116,6 +140,12 @@
   <a class="btn btn-pequeno" href="#pedido">Finalizar pedido</a>
 </div>
 
+<dialog id="video-dialog" aria-labelledby="video-titulo">
+  <div class="dialog-topo"><h2 id="video-titulo">Conheça o produto</h2><button id="fechar-video" type="button" autofocus>Fechar vídeo ×</button></div>
+  <video id="video-produto" controls playsinline preload="none"></video>
+  <p id="video-erro" role="status" hidden>Não foi possível abrir o vídeo. Você pode consultar os detalhes na página ou falar com a SIER.</p>
+</dialog>
+<div class="sr-only" id="aviso-sacola" role="status" aria-live="polite"></div>
 <script src="app.js" type="module"></script>
 </body>
 </html>

@@ -5,6 +5,34 @@ Página de venda da SIER: produtos com vídeo, carrinho, frete calculado pelo CE
 - **Sem as chaves configuradas, a loja roda em modo de teste:** frete e pagamento são simulados, e uma faixa amarela avisa no topo.
 - **Com as chaves e preços provisórios:** a loja se recusa a cobrar até os preços reais serem preenchidos.
 
+## Continuar o projeto em outro computador
+
+Requer Git e Node.js 22 ou superior. A prévia não exige instalar dependências.
+
+    git clone https://github.com/WillBillz/sier-vitrine.git
+    cd sier-vitrine/loja
+    npm run dev
+
+Abra http://127.0.0.1:4173. Em uma cópia existente, rode git pull antes de começar.
+O servidor local força o modo de teste: não cria cobranças reais.
+Para usar outra porta, defina a variável PORT antes de iniciar.
+
+### Versão visual atual — Da gota ao grão
+
+- Abertura com óleo e sal inteiros, narrativa de pequenos gestos e paleta verde, creme e terracota.
+- Fotografias locais em assets/; vídeos remotos carregados ao escolher assistir.
+- Tipografia ampliada, layout responsivo e movimento respeitando a preferência do sistema.
+- Compra por etapas: sacola, cotação de frete, dados e pagamento.
+- Alterar produtos ou CEP invalida o frete e exige nova cotação.
+- Capturas de referência em docs/desktop.png e docs/scene-mobile.png.
+
+Verificado em 18/11/2026: desktop 1440×1000, celular 390×844, largura 720px,
+sacola, frete simulado, campos obrigatórios, etapas e modal de vídeo.
+Não foi realizado pagamento real nem auditoria completa de acessibilidade.
+
+A pasta loja contém a landing page atual. A raiz do repositório continua sendo a
+vitrine anterior do GitHub Pages. Publicar a loja com APIs exige o ambiente descrito abaixo.
+
 ## O que a SIER precisa providenciar
 
 1. **Asaas** (conta da SIER, com CNPJ): crie a conta em asaas.com e gere uma chave de API em *Integrações → Chaves de API*. Para testar antes, use também uma conta de sandbox em sandbox.asaas.com.

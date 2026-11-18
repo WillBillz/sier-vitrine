@@ -19,10 +19,20 @@
       "conteudo": "1 L",
       "preco": 89.9,
       "provisorio": true,
-      "envio": {"peso": 1.4, "largura": 11, "altura": 30, "comprimento": 11},
-      "descricao": "Do verde profundo ao brilho dourado: um produto feito com cuidado, do frasco ao rótulo.",
-      "beneficios_titulo": "O que é",
-      "beneficios": ["Partículas de prata suspensas em água", "Produção própria da SIER", "Frasco âmbar de 1 L, que protege da luz", "Tire suas dúvidas de uso pelo WhatsApp"]
+      "envio": {
+        "peso": 1.4,
+        "largura": 11,
+        "altura": 30,
+        "comprimento": 11
+      },
+      "descricao": "Partículas de prata suspensas em água, em frasco âmbar de 1 litro. Produção própria da SIER.",
+      "beneficios_titulo": "Ver detalhes do produto",
+      "beneficios": [
+        "Partículas de prata suspensas em água",
+        "Produção própria da SIER",
+        "Frasco âmbar de 1 L, que protege da luz",
+        "Tire suas dúvidas de uso pelo WhatsApp"
+      ]
     },
     {
       "id": "oleo-de-ricino",
@@ -31,10 +41,20 @@
       "conteudo": "30 ml",
       "preco": 29.9,
       "provisorio": true,
-      "envio": {"peso": 0.15, "largura": 6, "altura": 13, "comprimento": 6},
-      "descricao": "Da semente à última gota. Pureza que a natureza guarda, em frasco conta-gotas.",
-      "beneficios_titulo": "Benefícios",
-      "beneficios": ["Hidrata e dá brilho aos cabelos", "Fortalece a aparência de cílios e sobrancelhas", "Suaviza pele ressecada, calcanhares e cutículas", "Óleo puro, em frasco conta-gotas"]
+      "envio": {
+        "peso": 0.15,
+        "largura": 6,
+        "altura": 13,
+        "comprimento": 6
+      },
+      "descricao": "Óleo puro em frasco conta-gotas de 30 ml. Confira os detalhes do produto antes de escolher.",
+      "beneficios_titulo": "Ver detalhes do produto",
+      "beneficios": [
+        "Hidrata e dá brilho aos cabelos",
+        "Fortalece a aparência de cílios e sobrancelhas",
+        "Suaviza pele ressecada, calcanhares e cutículas",
+        "Óleo puro, em frasco conta-gotas"
+      ]
     },
     {
       "id": "sal-integral",
@@ -43,10 +63,20 @@
       "conteudo": "1 kg",
       "preco": 24.9,
       "provisorio": true,
-      "envio": {"peso": 1.05, "largura": 18, "altura": 26, "comprimento": 8},
-      "descricao": "Das montanhas, do jeito que a natureza fez. Cada grão tem seu lugar.",
-      "beneficios_titulo": "Benefícios",
-      "beneficios": ["Não refinado: mantém minerais naturais além do sódio", "Grãos naturais, do jeito que a natureza fez", "Sabor marcante para o dia a dia", "Use com moderação: até 5 g de sal por dia (OMS)"]
+      "envio": {
+        "peso": 1.05,
+        "largura": 18,
+        "altura": 26,
+        "comprimento": 8
+      },
+      "descricao": "Sal não refinado em embalagem de 1 kg. Uma opção para o preparo das suas receitas.",
+      "beneficios_titulo": "Ver detalhes do produto",
+      "beneficios": [
+        "Não refinado: mantém minerais naturais além do sódio",
+        "Grãos naturais, do jeito que a natureza fez",
+        "Sabor marcante para o dia a dia",
+        "Use com moderação: até 5 g de sal por dia (OMS)"
+      ]
     },
     {
       "id": "alva-cristal-natural",
@@ -55,10 +85,20 @@
       "conteudo": "60 g",
       "preco": 39.9,
       "provisorio": true,
-      "envio": {"peso": 0.15, "largura": 7, "altura": 12, "comprimento": 7},
-      "descricao": "Frescor que vem da natureza. Desodorante em cristal, sem perfume.",
-      "beneficios_titulo": "Benefícios",
-      "beneficios": ["Eficaz contra o odor", "Sem cloridrato de alumínio e sem parabenos", "Sem perfume", "Dura até 1 ano"]
+      "envio": {
+        "peso": 0.15,
+        "largura": 7,
+        "altura": 12,
+        "comprimento": 7
+      },
+      "descricao": "Desodorante em cristal de 60 g, sem perfume. Uma opção ALVA para a rotina de cuidados.",
+      "beneficios_titulo": "Ver detalhes do produto",
+      "beneficios": [
+        "Eficaz contra o odor",
+        "Sem cloridrato de alumínio e sem parabenos",
+        "Sem perfume",
+        "Dura até 1 ano"
+      ]
     }
   ]
 }

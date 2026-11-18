@@ -3,5 +3,11 @@
   "private": true,
   "type": "module",
   "description": "Loja da SIER: vitrine, carrinho, frete pelo Melhor Envio e pagamento pelo Asaas (funções da Vercel).",
-  "engines": { "node": ">=20" }
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "node scripts/preview.mjs",
+    "check": "node --check app.js"
+  }
 }
